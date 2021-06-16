@@ -1,0 +1,59 @@
+{% extends "base.twig" %}
+
+{% block title %}Edit Poster{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="/css/admin.all-items.css">
+    <link rel="stylesheet" href="/css/profile.css">
+{% endblock %}
+{% block content %}
+    <div class="ad-container">
+        <h1>{{ poster.name }} (ID: {{ poster.id }})</h1>
+        <form action="/admin/update-poster" method="post" class="settings-form">
+            <input type="hidden" name="posterId" value="{{ poster.id }}">
+            <div class="poster-image-container">
+                <img src="/assets/posters/{{ poster.image }}" alt="">
+                <input type="text" id="image" name="image" value="{{ poster.image }}">
+            </div>
+            <div>
+                <input id="name" type="text" name="name" value="{{ poster.name }}">
+                <label for="name">Name</label>
+            </div>
+            <div>
+                <input id="price" type="text" name="price" value="{{ poster.extra_price }}">
+                <label for="price">Extra Price (kr)</label>
+            </div>
+
+            <div>
+                <input id="likes" type="text" name="likes" value="{{ poster.likes }}">
+                <label for="likes">Likes</label>
+            </div>
+            <fieldset class="color-container">
+                {% for color in allColors %}
+                    <span>
+                        <input
+                                class="clickable"
+                                type="checkbox"
+                                id="color-{{ color.id }}"
+                                name="color-{{ color.id }}"
+                                value="{{ color.name }}"
+                                {% if color.id in selectedColors %}
+                                    CHECKED
+                                {% endif %}
+                        >
+                        <label for="color-{{ color.id }}">{{ color.name }}</label>
+                    </span>
+                {% endfor %}
+                <input type="hidden" name="totalColorAmount" value="{{ allColors|length }}">
+            </fieldset>
+            <button type="submit" id="submit-data" class="save-btn clickable" disabled="">Save</button>
+        </form>
+        <form action="/admin/products/delete-product" method="post">
+            <input type="hidden" name="id" value="{{ poster.id }}">
+            <button type="submit" id="submit-data" class="delete-button clickable">DELETE</button>
+        </form>
+    </div>
+{% endblock %}
+{% block script %}
+    <script src="/js/disableSaveButton.js"></script>
+
+{% endblock %}

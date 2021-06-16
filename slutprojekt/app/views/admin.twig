@@ -1,0 +1,19 @@
+{% extends "base.twig" %}
+
+{% block title %}Admin{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="css/profile.css">
+{% endblock %}
+{% block content %}
+    <h1>Welcome {{ user.fname }}!</h1>
+
+    <ul>
+        <li><br><a class="u-button" href="/admin/all-orders">All orders</a></li>
+        <li><br><a class="u-button" href="/admin/all-users">All users</a></li>
+    </ul>
+
+    <a href="/log-out" id="log-out-btn"><p>Log Out</p></a>
+{% endblock %}
+{% block script %}
+    <script src="/js/disableSaveButton.js"></script>
+{% endblock %}

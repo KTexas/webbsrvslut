@@ -1,0 +1,66 @@
+{% extends "base.twig" %}
+
+{% block title %}Create user{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="css/user-form.css">
+    <link rel="stylesheet" href="css/validationCode.css">
+{% endblock %}
+{% block favicon %}{% if cartAmount is not same as(0) %}-cart{% endif %}{% endblock %}
+{% block cartAmount %}
+    {% if cartAmount is same as(0) %}
+    {% else %}
+        {{ cartAmount }}
+    {% endif %}
+{% endblock %}
+{% block content %}
+    {% if userExists %}
+        <p class="alert">User already exists</p>
+    {% endif %}
+    {% if passwordsDontMatch %}
+        <p class="alert">Passwords dont match</p>
+    {% endif %}
+    {% if not showValidCode %}
+        <form action="/post-user" method="post" class="u-form">
+            <h1 class="u-title">Create User</h1>
+            <input class="u-input" type="text" placeholder="Email" name="email">
+            <input class="u-input" type="text" placeholder="First name" name="fname">
+            <input class="u-input" type="text" placeholder="Last name" name="lname">
+            <input class="u-input" type="password" placeholder="Password" name="password">
+            <input class="u-input" type="password" placeholder="Confirm Password" name="cpassword">
+            <button class="u-button" type="submit">Create Account</button>
+        </form>
+    {% else %}
+        <div class="center-content">
+            <h1>Verify Email Address</h1>
+            <form class="otc" method="post" name="one-time-code" action="/verify-email">
+                <fieldset>
+                    <legend>Validation Code</legend>
+                    <label for="otc-1">Number 1</label>
+                    <label for="otc-2">Number 2</label>
+                    <label for="otc-3">Number 3</label>
+                    <label for="otc-4">Number 4</label>
+                    <label for="otc-5">Number 5</label>
+                    <label for="otc-6">Number 6</label>
+                    <div>
+                        <input type="number" name="otc-1" pattern="[0-9]*"  value="" inputtype="numeric" autocomplete="one-time-code" id="otc-1" required>
+                        <input type="number" name="otc-2" pattern="[0-9]*" min="0" max="9" maxlength="1"  value="" inputtype="numeric" id="otc-2" required>
+                        <input type="number" name="otc-3" pattern="[0-9]*" min="0" max="9" maxlength="1"  value="" inputtype="numeric" id="otc-3" required>
+                        <input type="number" name="otc-4" pattern="[0-9]*" min="0" max="9" maxlength="1"  value="" inputtype="numeric" id="otc-4" required>
+                        <input type="number" name="otc-5" pattern="[0-9]*" min="0" max="9" maxlength="1"  value="" inputtype="numeric" id="otc-5" required>
+                        <input type="number" name="otc-6" pattern="[0-9]*" min="0" max="9" maxlength="1"  value="" inputtype="numeric" id="otc-6" required>
+                    </div>
+                </fieldset>
+                <input class="u-button clickable" type="submit" value="Check">
+            </form>
+            <form action="/send-new-verify-code" method="post">
+                <input type="hidden" value="{{ user.email }}" name="email">
+                <input type="submit" value="Send new code" class="u-login-button clickable">
+            </form>
+        </div>
+    {% endif %}
+
+    <a href="/log-in" class="u-login-button {% if showValidCode %}fixed-bottom{% endif %}">Log in</a>
+{% endblock %}
+{% block script %}
+    <script src="/js/validationCode.js"></script>
+{% endblock %}

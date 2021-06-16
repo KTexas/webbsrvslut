@@ -1,0 +1,91 @@
+{% extends "base.twig" %}
+
+{% block title %}User {{ user.id }}{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="/css/admin.all-items.css">
+{% endblock %}
+{% block favicon %}{% if cartAmount is not same as(0) %}-cart{% endif %}{% endblock %}
+{% block cartAmount %}
+    {% if cartAmount is same as(0) %}
+    {% else %}
+        {{ cartAmount }}
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <div class="ad-container">
+        <div class="ad-header">
+            <h1>{{ user.fname }} {{ user.lname }}</h1>
+            <a href="/admin/user/{{ user.id }}/edit" class="settings-icon">
+                <img src="/assets/settings.png" alt="">
+            </a>
+        </div>
+        <br>
+        {% if likedProducts|length == 0 %}
+            <h2>No Liked Products</h2>
+        {% else %}
+            <h2>Liked Products</h2>
+            <br>
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>STARTING PRICE</th>
+                    <th>LIKES</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for likedProduct in likedProducts %}
+                        <tr class='clickable-row clickable' data-href='/{{ likedProduct.name | replace({' ' : '-'}) }}-poster'>
+                            <td>{{ likedProduct.id }}</td>
+                            <td>{{ likedProduct.name }}</td>
+                            <td>{{ likedProduct.extra_price }}</td>
+                            <td>{{ likedProduct.likes }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+        <br>
+        {% if orders|length == 0 %}
+            <h2>No Orders</h2>
+        {% else %}
+            <h2>Orders</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>ORDER ID</th>
+                    <th>PRODUCT ID</th>
+                    <th>ORDER QTY</th>
+                    <th>UNIT | TOTAL PRICE</th>
+                    <th>PRODUCT DIMENSION</th>
+                    <th>ORDER DATE</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.orderData.id }}</td>
+                        <td class='clickable-row clickable' data-href='/{{ order.product.name | replace({' ' : '-'}) }}-poster'>{{ order.product.id }}</td>
+                        <td>{{ order.orderData.qty }}</td>
+                        <td>{{ order.orderData.unit_price }} kr | {{ order.orderData.total }} kr</td>
+                        <td>{{ order.orderData.size }}</td>
+                        <td>{{ order.tracking.order_date|date() }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+
+    </div>
+{% endblock %}
+{% block script %}
+    <script>
+        jQuery(document).ready(function($) {
+            $(".clickable-row").click(function() {
+                window.location = $(this).data("href");
+            });
+        });
+    </script>
+
+{% endblock %}

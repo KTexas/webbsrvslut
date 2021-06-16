@@ -1,0 +1,37 @@
+{% extends "base.twig" %}
+
+{% block title %}Log in{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="css/user-form.css">
+{% endblock %}
+{% block favicon %}{% if cartAmount is not same as(0) %}-cart{% endif %}{% endblock %}
+{% block cartAmount %}
+    {% if cartAmount is same as(0) %}
+    {% else %}
+        {{ cartAmount }}
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <form action="/log-in-user" method="post" class="u-form">
+        <h1 class="u-title">Log in</h1>
+        <input class="u-input" type="text" placeholder="Email" name="email">
+        <input class="u-input" id="password-input" onmouseover="showPassword('#password-input')" onmouseout="hidePassword('#password-input')" type="password" placeholder="Password" name="password" autocomplete="off">
+{#        <input type="checkbox" id="show-password" onclick="showPassword('#password-input')">#}
+{#        <label for="show-password" id="show-password-label">Show Password</label>#}
+        <button class="u-button" type="submit">Log in</button>
+    </form>
+    <a href="/forgot-password" class="u-login-button">Forgot Password?</a>
+    <a href="/create-profile" class="u-login-button">Create Account</a>
+{% endblock %}
+{% block script %}
+    <script>
+        showPassword = (element) => {
+            let x = document.querySelector(element);
+            x.type = 'text';
+        }
+        hidePassword = (element) => {
+            let x = document.querySelector(element);
+            x.type = 'password';
+        }
+    </script>
+{% endblock %}

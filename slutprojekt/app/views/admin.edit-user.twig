@@ -1,0 +1,39 @@
+{% extends "base.twig" %}
+
+{% block title %}Edit User {{ user.id }}{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="/css/admin.all-items.css">
+    <link rel="stylesheet" href="/css/profile.css">
+{% endblock %}
+{% block content %}
+    <div class="ad-container">
+        <h1>USER</h1>
+        <form action="/admin/update-user" method="post" class="settings-form">
+            <input type="hidden" name="userId" value="{{ user.id }}">
+            <div>
+                <input id="email" type="text" name="email" value="{{ user.email }}">
+                <label for="email">Email</label>
+            </div>
+
+            <div>
+                <input id="fname" type="text" name="fname" value="{{ user.fname }}">
+                <label for="fname">First Name</label>
+            </div>
+
+            <div>
+                <input id="lname" type="text" name="lname" value="{{ user.lname }}">
+                <label for="lname">Last Name</label>
+            </div>
+
+            <div>
+                <input id='adminHidden' type='hidden' value='off' name='adminHidden'>
+                <input class="clickable" id="admin" type="checkbox" name="admin" {% if user.is_admin %}CHECKED{% endif %}>
+                <label for="admin">Is Admin</label>
+            </div>
+            <button type="submit" id="submit-data" class="save-btn clickable" disabled="">Save</button>
+        </form>
+    </div>
+{% endblock %}
+{% block script %}
+    <script src="/js/disableSaveButton.js"></script>
+{% endblock %}

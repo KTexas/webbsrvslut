@@ -1,0 +1,86 @@
+#content {
+    height: 100%;
+}
+
+.u-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.u-input {
+    transition: 0.2s ease-in-out;
+    width: 60%;
+    height: 40px;
+    margin: 15px 0;
+    border-radius: 10px;
+    border: var(--grey) solid 2px;
+    padding-left: 10px;
+    font-size: 1.1em;
+}
+
+.u-input:first-child {
+    margin-top: 40px;
+}
+
+.u-input:focus {
+    outline: none;
+}
+
+.u-input:hover,
+.u-input:focus {
+    width: 70%;
+}
+
+.u-title {
+    margin-top: 20px;
+}
+
+.u-button,
+.u-login-button {
+    transition: 0.2s ease-in-out;
+    height: 40px;
+    width: 200px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: var(--blue);
+    color: var(--white);
+    font-size: 1.1em;
+    border: none;
+}
+
+.u-login-button {
+    margin-top: 20px;
+    border: var(--blue) solid 2px;
+    background-color: transparent;
+    color: var(--blue);
+    font-weight: 600;
+}
+
+.u-button:hover,
+.u-login-button:hover {
+    width: 250px;
+}
+
+.fixed-bottom {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+.alert {
+    display: inline-block;
+    background-color: red;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+.center-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,146 @@
+.ad-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+table {
+    width: 1000px;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+}
+th, td {
+    padding: 15px;
+    background-color: rgba(255,255,255,0.2);
+    color: #000;
+}
+
+th {
+    text-align: left;
+}
+thead th {
+    background-color: var(--blue);
+    color: #fff;
+    letter-spacing: 1px;
+}
+tbody tr:hover {
+    background-color: rgba( 96, 172, 229, 0.3 );
+}
+tbody td {
+    position: relative;
+}
+tbody td:hover:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -9999px;
+    bottom: -9999px;
+    background-color: rgba( 96, 172, 229, 0.3 );
+    z-index: -1;
+}
+
+.ad-container form > div {
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+}
+
+.settings-form div {
+    padding: 10px;
+    font-size: 1.5em;
+}
+
+.settings-form input {
+    width: 40px;
+    height:40px;
+}
+
+.settings-form input:not([type="checkbox"]),
+.search-form input{
+    margin-right: 10px;
+    height: 50px;
+    width: 300px;
+    border: 2px solid var(--grey);
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 0.8em;
+}
+
+.ad-header {
+    display: flex;
+}
+
+.settings-icon {
+    margin-left: 10px;
+}
+
+.color-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border: none;
+    width: 500px;
+}
+
+.color-container > * {
+    padding: 10px;
+    margin: 10px 0;
+    width: 150px;
+    background-color: lightgrey;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.color-container label {
+    font-size: 1.2em;
+    margin-left: 10px;
+}
+
+.poster-image-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 500px;
+    margin-bottom: 50px;
+}
+
+.poster-image-container > img {
+    height: 90%;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.add-button {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    background-color: var(--light-blue);
+    color: white;
+    border: none;
+    font-size: 4em;
+    text-align: center;
+    line-height: 80px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.search-container > button {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    border: 2px solid var(--grey);
+    background-color: transparent;
+}

@@ -1,0 +1,54 @@
+{% extends "base.twig" %}
+
+{% block title %}All Users{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="/css/admin.all-items.css">
+{% endblock %}
+{% block content %}
+    <div class="ad-container">
+        <div class="search-container">
+            <form action="" class="search-form" id="search-form">
+                <input type="text" placeholder="Search" id="search-input" name="search" {% if search %}value="{{ search }}"{% endif %}>
+            </form>
+            <button onclick="clearSearch()">Clear</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>EMAIL</th>
+                    <th>FIRST NAME</th>
+                    <th>LAST NAME</th>
+                    <th>IS ADMIN</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr  class='clickable-row clickable' data-href='/admin/user/{{ user.id }}'>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.fname }}</td>
+                        <td>{{ user.lname }}</td>
+                        <td>{% if user.is_admin %}TRUE{% else %}FALSE{% endif %}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+{% block script %}
+    <script>
+        clearSearch = () => {
+            $('#search-input').val('');
+            $('#search-form').submit();
+        }
+    </script>
+    <script>
+        jQuery(document).ready(function($) {
+            $(".clickable-row").click(function() {
+                window.location = $(this).data("href");
+            });
+        });
+    </script>
+
+{% endblock %}

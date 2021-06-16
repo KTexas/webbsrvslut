@@ -1,0 +1,80 @@
+{% extends "base.twig" %}
+
+{% block title %}{{ poster.name }} Poster{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="css/poster-details.css">
+{% endblock %}
+{% block favicon %}{% if cartAmount is not same as(0) %}-cart{% endif %}{% endblock %}
+{% block cartAmount %}
+    {% if cartAmount is same as(0) %}
+    {% else %}
+        {{ cartAmount }}
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <div class="poster-container">
+
+        <div class="url-route">
+            <a href="/">POSTERS</a>
+            <p>&#160;/ {{ poster.name | upper }}</p>
+        </div>
+        <img class="poster-image" src="/assets/posters/{{ poster.image }}" alt="{{ poster.image }}">
+        <div class="line-breaker"></div>
+        <h1 class="title">{{ poster.name }}</h1>
+        <div class="price-container">
+            <p class="poster-price" id="price-label">
+                {% set price = 99 %}
+                {% set price = price + poster.extra_price %}
+                {{ price }}
+            </p>
+            <p class="poster-price">&#160;kr</p>
+        </div>
+        <form action="/add-cart" method="post" class="order-form">
+            <p class="select-label">Chose size</p>
+            <input type="hidden" name="product_id" value="{{ poster.id }}">
+            <input type="hidden" name="location" value="{{ url }}">
+            <select class="clickable" name="poster_size" id="poster-size" onchange="getText(this)">
+                <option value="21x30">21x30</option>
+                <option value="30x40">30x40</option>
+                <option value="30x40">40x50</option>
+                <option value="50x70">50x70</option>
+                <option value="70x100">70x100</option>
+            </select>
+            <div class="submit-container">
+                <button type="submit" class="clickable">
+                    Add to
+                    <img src="/assets/bag-white.png" alt="cart">
+                </button>
+            </div>
+        </form>
+
+    </div>
+    {% if addCartAnim %}
+        <div class="cart-popup">
+            <div class="cp-text-container">
+                <img class="cp-shopping-bag" src="/assets/bag-white.png" alt="">
+                <p>"{{ poster.name }}" was added to your cart!</p>
+            </div>
+            <img class="cp-img-background" src="/assets/posters/{{ poster.image }}" alt="{{ poster.image }}">
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+{% block script %}
+<script>
+    let DivTxt = [
+        99 + {{ poster.extra_price }},
+        159 + {{ poster.extra_price }},
+        199 + {{ poster.extra_price }},
+        249 + {{ poster.extra_price }},
+        379 + {{ poster.extra_price }}
+    ]
+
+    function getText(selction){
+        textSelected = selction.selectedIndex;
+        document.querySelector('#price-label').innerHTML = DivTxt[textSelected];
+        document.querySelector('#form-price').value = DivTxt[textSelected];
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "base.twig" %}
+
+{% block title %}All Orders{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="/css/admin.all-items.css">
+{% endblock %}
+{% block content %}
+    <div class="ad-container">
+        <div class="search-container">
+            <form action="" class="search-form" id="search-form">
+                <input type="text" placeholder="Search" id="search-input" name="search" {% if search %}value="{{ search }}"{% endif %}>
+            </form>
+            <button onclick="clearSearch()">Clear</button>
+        </div>
+        {% if orders|length > 0 %}
+            <table>
+                <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>User ID</th>
+                    <th>Product ID</th>
+                    <th>QTY</th>
+                    <th>Unit Price</th>
+                    <th>Total</th>
+                    <th>D.country</th>
+                    <th>D.city</th>
+                    <th>D.street</th>
+                    <th>D.zip</th>
+                    <th>T.status</th>
+                </tr>
+                </thead>
+                <tbody>
+
+
+                {% for order in orders %}
+                    <tr class='clickable-row clickable' data-href='/admin/order/{{ order.data.id }}'>
+                        <td>{{ order.data.id }}</td>
+                        <td>{{ order.user }}</td>
+                        <td>{{ order.data.product_id }}</td>
+                        <td>{{ order.data.qty }}</td>
+                        <td>{{ order.data.unit_price }}</td>
+                        <td>{{ order.data.total }}</td>
+                        <td>{{ order.destination.country }}</td>
+                        <td>{{ order.destination.city }}</td>
+                        <td>{{ order.destination.street }}</td>
+                        <td>{{ order.destination.zip_code }}</td>
+                        <td>{{ order.tracking.status }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h2>No orders found containing '{{ search }}'</h2>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block script %}
+    <script>
+        clearSearch = () => {
+            $('#search-input').val('');
+            $('#search-form').submit();
+        }
+    </script>
+    <script>
+        jQuery(document).ready(function($) {
+            $(".clickable-row").click(function() {
+                window.location = $(this).data("href");
+            });
+        });
+    </script>
+{% endblock %}

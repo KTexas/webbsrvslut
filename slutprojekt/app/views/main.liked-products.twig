@@ -1,0 +1,47 @@
+{% extends "base.twig" %}
+
+{% block title %}Liked Products{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="css/index.css">
+{% endblock %}
+{% block favicon %}{% if cartAmount is not same as(0) %}-cart{% endif %}{% endblock %}
+{% block cartAmount %}
+    {% if cartAmount is same as(0) %}
+    {% else %}
+        {{ cartAmount }}
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <h1 class="title">Liked Posters</h1>
+    <div class="poster-container">
+        {% for poster in posters %}
+            <a href="/{{ poster.name | replace({' ' : '-'}) }}-poster">
+                <div class="poster-card">
+                    <img class="poster-image" src="/assets/posters/{{ poster.image }}" alt="{{ poster.image }}">
+                    <ul class="poster-ul">
+                        <li class="poster-li">
+                            <p class="poster-title">{{ poster.name }}</p>
+                            <p class="poster-price">
+                                {% set price = 99 %}
+                                {% set price = price + poster.extra_price %}
+                                Fr. {{ price }}:-
+                            </p>
+                        </li>
+                        <li class="poster-li poster-li-2">
+                            <form action="/like-poster" method="post">
+                                <input type="hidden" name="poster_id" value="{{ poster.id }}">
+                                <input type="hidden" name="poster_liked" value="true">
+                                <input type="hidden" name="location" value="/liked-products">
+                                <button type="submit" class="clickable like-button"><img src="/assets/heart{{ like }}-liked.png" alt=""></button>
+                            </form>
+                            <p class="poster-likes">{{ poster.likes }}</p>
+                        </li>
+                    </ul>
+                </div>
+            </a>
+        {% endfor %}
+        {% if posters|length == 0 %}
+            <p>You do not have any liked products</p>
+        {% endif %}
+    </div>
+{% endblock %}

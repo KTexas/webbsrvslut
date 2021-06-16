@@ -1,0 +1,49 @@
+{% extends "base.twig" %}
+
+{% block title %}Cart{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="css/cart.css">
+{% endblock %}
+{% block content %}
+    {% if cartItems|length > 0  %}
+        {% set cartAmount = 0 %}
+        {% for item in cartItems %}
+            {% set cartAmount = cartAmount + item.amount %}
+        {% endfor %}
+    {% endif %}
+    <h1 class="cart-title">Your Cart{% if cartItems|length == 0  %} is Empty{% else %} Has {{ cartAmount }} items{% endif %}</h1>
+    <ul class="cart-container">
+        {% for item in cartItems %}
+            <li class="cart-item">
+                <a href="/{{ item.poster.name | replace({' ' : '-'}) }}-poster"><img class="cart-image" src="/assets/posters/{{ item.poster.image }}" alt="{{ item.poster.name }}"></a>
+                <div class="cart-text-container">
+                    <a href="/{{ item.poster.name | replace({' ' : '-'}) }}-poster" class="cart-item-name">{{ item.poster.name }} ({{ item.size }})</a>
+                    <p class="cart-item-price">{{ item.price }} kr</p>
+                    <form action="/change-cart-item-amount" method="post" onchange="this.form.submit()">
+                        <input type="hidden" name="product_id" value="{{ item.poster.id }}">
+                        <input type="hidden" name="poster_price" value="{{ item.price }}" id="form-price">
+                        <input type="hidden" name="poster_size" value="{{ item.size }}">
+                        <label for="amount-dropdown">Amount: </label>
+                        <select class="clickable" name="amount" id="amount-dropdown" onchange="this.form.submit()">
+                            {% for i in 1..20 %}
+                                <option {% if item.amount == i %} selected {% endif %} value="{{ i }}">{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                    </form>
+                    <p class="cart-item-article">Article number: {{ item.poster.id }}</p>
+                    <form action="/remove-cart-item" method="post">
+                        <input type="hidden" name="product_id" value="{{ item.poster.id }}">
+                        <input type="hidden" name="poster_size" value="{{ item.size }}">
+                        <button type="submit" class="remove-button clickable"></button>
+                    </form>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    {% if cartItems|length > 0  %}
+        <a href="/confirm-order" class="continue-btn">
+            Continue →
+        </a>
+    {% endif %}
+
+{% endblock %}

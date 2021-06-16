@@ -1,0 +1,243 @@
+body {
+    background-attachment: fixed;
+}
+
+/*h1,h2,h3 {*/
+/*    margin-left: 2%;*/
+/*}*/
+
+.poster-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-left: -1.2vw;
+}
+
+.poster-card {
+    transition: 0.15s ease-in-out;
+    width: 210px;
+    margin: 25px;
+}
+
+.poster-card:hover .poster-image {
+    transform: translateY(-10px);
+}
+
+.poster-ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 60px;
+    padding: 0 10px;
+    margin-top: 10px;
+}
+
+.poster-li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 60px;
+}
+
+.poster-li-2 {
+    align-items: center;
+}
+
+.poster-image {
+    transition: 0.15s ease-in-out;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.poster-title {
+    font-size: 1.15em;
+    font-weight: 500;
+}
+
+.poster-price {
+
+}
+
+.all-href > h3 {
+    width: 150px;
+}
+
+.like-button {
+    transition: 0.1s;
+    width: 30px;
+    background-color: transparent;
+    border: none;
+}
+
+.like-button:focus {
+    outline: none;
+}
+
+.like-button:active {
+    transform: scale(0.9);
+}
+
+.like-button > img {
+    width: 100%;
+}
+
+.poster-likes {
+
+}
+
+.cart-container {
+
+}
+
+.cart-image {
+    height: 160px !important;
+    width: 114px !important;
+    margin-right: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.cart-item {
+    width: 100%;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.cart-item-name {
+    font-size: 1.8em;
+}
+
+.cart-item-price {
+    color: var(--grey);
+    font-size: 1.4em;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.cart-item-size {
+
+}
+
+.cart-item-article {
+    position: absolute;
+    bottom: 0;
+}
+
+.order-container {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 40px;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 700px;
+    height: 330px;
+    margin-left: 2%;
+}
+
+.order-container > div > a > img {
+    border-radius: 20px;
+}
+
+.map-position {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+.map-position > p  {
+    font-size: 1.5em;
+    margin-top: 5px;
+    margin-left: -20px;
+}
+
+.map-container {
+    margin-top: -15px;
+    position: relative;
+    height: 270px;
+    width: 280px;
+}
+
+.map-container-live {
+    width: 760px;
+    margin-top: 60px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.destination-map {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border-radius: 15px!important;
+    box-shadow: 0 0 15px grey;
+    z-index: 2;
+}
+
+.form-container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#map-position-live {
+    position: relative;
+}
+
+.log-in-modal {
+    transition: .2s;
+    position: fixed;
+    bottom: -600px;
+    right: 40px;
+    height: 300px;
+    width: 500px;
+    border-radius: 20px;
+    background-color: var(--light-blue);
+    padding: 20px 50px 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.log-in-modal p {
+    font-size: 2.4em;
+    color: white;
+}
+
+.log-in-modal a {
+    border: solid 2px white;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    font-size: 2em;
+    margin-right: 20px;
+}
+
+.log-in-modal button {
+    transition: .2s;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5em;
+    border: solid 2px white;
+    border-radius: 20px;
+    background-color: transparent;
+    color: white;
+}
+
+.log-in-modal button:hover {
+    background-color: #fff;
+    color: var(--light-blue);
+}

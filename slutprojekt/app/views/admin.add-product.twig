@@ -1,0 +1,58 @@
+{% extends "base.twig" %}
+
+{% block title %}Add product{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="/css/admin.all-items.css">
+    <link rel="stylesheet" href="/css/profile.css">
+{% endblock %}
+{% block content %}
+    <div class="ad-container">
+        <form action="/admin/add-product/post" method="post" class="settings-form" enctype="multipart/form-data">
+            <div>
+                <label for="name">Name: </label>
+                <input id="name" type="text" name="name" autocomplete="off">
+            </div>
+            <div>
+                <label for="price">Extra price: </label>
+                <input id="price" type="text" name="price" autocomplete="off">
+            </div>
+            <div>
+                <label for="likes">Likes: </label>
+                <input id="likes" type="text" name="likes" autocomplete="off">
+            </div>
+            <div>
+                <label for="image">Image: </label>
+{#                <input id="image" type="text" name="image" autocomplete="off">#}
+                <input name="image" type="file">
+            </div>
+            <fieldset class="color-container">
+                {% for color in colors %}
+                    <span>
+                        <input
+                                type="checkbox"
+                                id="color-{{ color.id }}"
+                                name="color-{{ color.id }}"
+                                value="{{ color.name }}"
+                                {% if color.id in selectedColors %}
+                                    CHECKED
+                                {% endif %}
+                        >
+                        <label for="color-{{ color.id }}">{{ color.name }}</label>
+                    </span>
+                {% endfor %}
+                <input type="hidden" name="totalColorAmount" value="{{ colors|length }}">
+            </fieldset>
+            <input type="submit" value="Add" class="u-button clickable">
+        </form>
+    </div>
+{% endblock %}
+{% block script %}
+    <script>
+        jQuery(document).ready(function($) {
+            $(".clickable-row").click(function() {
+                window.location = $(this).data("href");
+            });
+        });
+    </script>
+
+{% endblock %}

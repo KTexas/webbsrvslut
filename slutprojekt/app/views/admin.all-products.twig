@@ -1,0 +1,52 @@
+{% extends "base.twig" %}
+
+{% block title %}All Products{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="/css/admin.all-items.css">
+{% endblock %}
+{% block content %}
+    <div class="ad-container">
+        <div class="search-container">
+            <form action="" class="search-form" id="search-form">
+                <input type="text" placeholder="Search" id="search-input" name="search" {% if search %}value="{{ search }}"{% endif %}>
+            </form>
+            <button onclick="clearSearch()">Clear</button>
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>EXTRA PRICE</th>
+                <th>LIKES</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for poster in posters %}
+                <tr  class='clickable-row clickable' data-href='/admin/products/{{ poster.name | replace({' ' : '-'}) }}-poster'>
+                    <td>{{ poster.id }}</td>
+                    <td>{{ poster.name }}</td>
+                    <td>{{ poster.extra_price }}</td>
+                    <td>{{ poster.likes }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a class="add-button" href="/admin/add-product">+</a>
+{% endblock %}
+{% block script %}
+    <script>
+        clearSearch = () => {
+            $('#search-input').val('');
+            $('#search-form').submit();
+        }
+    </script>
+    <script>
+        jQuery(document).ready(function($) {
+            $(".clickable-row").click(function() {
+                window.location = $(this).data("href");
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.twig" %}
+
+{% block title %}Cart{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="/css/cart.css">
+{% endblock %}
+{% block content %}
+    <h1 class="cart-title">Your Order</h1>
+    <ul class="cart-container">
+        {% for order in orders %}
+            <li class="order-container">
+                <p>Order id: {{ order.orderData.id }}<br>&nbsp;</p>
+                <div class="cart-item">
+                    <a href="/{{ order.product.name | replace({' ' : '-'}) }}-poster"><img class="cart-image" src="/assets/posters/{{ order.product.image }}" alt="{{ order.product.name }}"></a>
+                    <div class="cart-text-container">
+                        <a href="/{{ order.product.name | replace({' ' : '-'}) }}-poster" class="cart-item-name">{{ order.product.name }}</a>
+                        <p class="cart-item-price">
+                            {% if order.orderData.qty == 1 %}
+                                Total: {{ order.orderData.total }} kr
+                            {% else %}
+                                Per unit: {{ order.orderData.unit_price }} kr <br>Total: {{ order.orderData.total }} kr
+                            {% endif %}
+
+                        </p>
+                        <p>Dimensions: {{ order.orderData.size }}<br>Quantity: {{ order.orderData.qty }}</p>
+                        <p class="cart-item-article">Article number: {{ order.product.id }}</p>
+                    </div>
+                </div>
+                <div class="map-position">
+                    <p>Destination:</p>
+                    <div class="map-container">
+                        <iframe
+                                class="destination-map"
+                                width="100%"
+                                height="100%"
+                                style="border:0"
+                                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBWN6IL8paR0hWUg9Gy0QBx0JC5oQRbVP4&q={{ destination.city }},{{ destination.country }},{{ destination.zip_code }}" allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                <div>
+                    <p>Payment method: {{ payment }}</p>
+                    <p>{{ order.tracking.status|capitalize }}</p>
+                    <p>{{ order.tracking.order_date|date() }}</p>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

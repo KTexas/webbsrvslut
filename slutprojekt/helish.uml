@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.colors</OriginalElement>
+  <nodes>
+    <node x="361.12797619047626" y="192.0">a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.users</node>
+    <node x="1144.25" y="472.0">a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.order_payment</node>
+    <node x="553.9017857142857" y="0.0">a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.products</node>
+    <node x="973.25" y="472.0">a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.order_destination</node>
+    <node x="848.25" y="225.0">a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.orders</node>
+    <node x="0.0" y="33.0">a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.themes</node>
+    <node x="1080.25" y="33.0">a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.colors</node>
+    <node x="308.25" y="483.0">a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.user_reset_code</node>
+    <node x="561.25" y="505.0">a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.order_user</node>
+    <node x="156.25" y="505.0">a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.liked_products</node>
+    <node x="1047.25" y="269.5">a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.product_color</node>
+    <node x="33.0" y="269.5">a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.product_theme</node>
+    <node x="700.25" y="483.0">a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.order_tracking</node>
+    <node x="22.5885660731022" y="649.3908153701968">a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.verify_email_code</node>
+  </nodes>
+  <notes>
+    <note x="19.686035613870658" y="607.8031865042175">
+      <node>a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.verify_email_code</node>
+      <value>Email -&gt; user_email</value>
+      <edge>
+        <point x="0.0" y="-59.5" />
+        <point x="0.0" y="16.5" />
+      </edge>
+    </note>
+  </notes>
+  <edges>
+    <edge source="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.product_color" target="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.products">
+      <point x="-33.0" y="-37.5" />
+      <point x="1080.25" y="162.0" />
+      <point x="672.9017857142857" y="162.0" />
+      <point x="51.0" y="71.0" />
+    </edge>
+    <edge source="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.product_theme" target="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.products">
+      <point x="33.0" y="-37.5" />
+      <point x="132.0" y="162.0" />
+      <point x="570.9017857142857" y="162.0" />
+      <point x="-51.0" y="71.0" />
+    </edge>
+    <edge source="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.product_theme" target="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.themes">
+      <point x="-33.0" y="-37.5" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.product_color" target="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.colors">
+      <point x="33.0" y="-37.5" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.order_user" target="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.orders">
+      <point x="29.75" y="-37.5" />
+      <point x="650.5" y="442.0" />
+      <point x="870.625" y="442.0" />
+      <point x="-67.125" y="82.0" />
+    </edge>
+    <edge source="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.orders" target="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.products">
+      <point x="0.0" y="-82.0" />
+      <point x="937.75" y="172.0" />
+      <point x="638.9017857142857" y="172.0" />
+      <point x="17.0" y="71.0" />
+    </edge>
+    <edge source="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.order_user" target="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.users">
+      <point x="-29.75" y="-37.5" />
+      <point x="591.0" y="452.0" />
+      <point x="515.2946428571429" y="452.0" />
+      <point x="61.66666666666663" y="115.0" />
+    </edge>
+    <edge source="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.order_destination" target="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.orders">
+      <point x="0.0" y="-70.5" />
+      <point x="1048.75" y="452.0" />
+      <point x="960.125" y="452.0" />
+      <point x="22.375" y="82.0" />
+    </edge>
+    <edge source="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.liked_products" target="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.users">
+      <point x="33.0" y="-37.5" />
+      <point x="255.25" y="452.0" />
+      <point x="391.9613095238096" y="452.0" />
+      <point x="-61.666666666666686" y="115.0" />
+    </edge>
+    <edge source="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.order_payment" target="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.orders">
+      <point x="0.0" y="-70.5" />
+      <point x="1231.25" y="442.0" />
+      <point x="1004.875" y="442.0" />
+      <point x="67.125" y="82.0" />
+    </edge>
+    <edge source="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.liked_products" target="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.products">
+      <point x="-33.0" y="-37.5" />
+      <point x="189.25" y="172.0" />
+      <point x="604.9017857142857" y="172.0" />
+      <point x="-17.0" y="71.0" />
+    </edge>
+    <edge source="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.order_tracking" target="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.orders">
+      <point x="-1.1368683772161603E-13" y="-59.5" />
+      <point x="826.7499999999999" y="452.0" />
+      <point x="915.375" y="452.0" />
+      <point x="-22.375" y="82.0" />
+    </edge>
+    <edge source="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.user_reset_code" target="a925ca33-1a0a-450f-886a-a161efe0c3ab.TABLE:helish.public.users">
+      <point x="0.0" y="-59.5" />
+      <point x="424.75" y="452.0" />
+      <point x="453.62797619047626" y="452.0" />
+      <point x="0.0" y="115.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7968633308439134" x="659.5" y="388.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+
